@@ -1,5 +1,4 @@
-# Dunder methods are automatically called by many of Python's build-in operations
-# They allow devs customise the behaviour of the objects rather than returning object address
+# Dunder methods are automatically called by many of Python's build-in operators e.g. ==, <
 
 class Book():
 
@@ -25,19 +24,27 @@ class Book():
     def __getitem__(self, key):
         if key == "title":
             return self.title
-        if key == "author":
+        elif key == "author":
             return  self.author
+        elif key == "no_pages":
+            return self.no_pages
+        else:
+            return f"Key: '{key}' was not found"
 
 book1 = Book("The Tolkien", "J.R.R Talkien", 310)
 book2 = Book("Harry Potter", "J.K. Rowling", 223)
 book3 = Book("The Lion", "C.S. Lewis", 172)
 book4 = Book("The Lion", "C.S. Lewis", 172)
 
-print(book1.__eq__(book2))
+print("Checking whether the no of pages are equal: 'book3 == book4'")
 print(book3 == book4)
 print(book3.__eq__(book4))
+print("\nComparing no of pages: 'book2 < book3'")
 print(book2 < book3)
-print("Is there a word lion in the title of the book no4: " )
+print("\nIs there a word 'Lion' in the title of the book no4: " )
 print("Lion" in book4)
-
+print("\nReturning value using object key e.g. 'book1['title']' ")
 print(book1['title'])
+print(book1['author'])
+print(book1['no_pages'])
+print(book1['co-author'])
